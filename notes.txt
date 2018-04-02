@@ -1,0 +1,24 @@
+>>> lines=sc.textFile('file.txt')
+>>> lines
+file.txt MapPartitionsRDD[1] at textFile at NativeMethodAccessorImpl.java:0
+>>> lines.count()
+5
+>>> lines.first()
+u'this line has python'
+
+the spark context (sc by default in the shell) gives the driver program access to spark
+>>> sc
+<pyspark.context.SparkContext object at 0x7f373aa03c90>
+the driver controls nodes called executors
+
+>>> pythonLines = lines.filter(lambda line: "python in line")
+>>> pythonLines
+PythonRDD[4] at RDD at PythonRDD.scala:48
+>>> pythonLines.first()
+u'this line has python'
+
+spark binaries:
+/opt/spark/bin/pyspark
+/opt/spark/bin/spark-shell
+/opt/spark/bin/spark-submit #for standalone python programs on spark
+
